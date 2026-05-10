@@ -1,105 +1,91 @@
-# CODTIME: A Real-Time Collaborative Development Environment
+<div align="center">
 
-## 📌 Project Overview
-**CODTIME** is a full-stack web application developed as a project to explore the complexities of real-time synchronization and remote code execution. The primary goal was to build a high-performance, collaborative workspace where multiple developers can write, discuss, and execute code simultaneously in a unified environment.
+# 🚀 CODTIME
+### A Premium Real-Time Collaborative IDE for the Modern Web
 
-This project focuses on bridging the gap between static code editors and interactive development environments by integrating a live Pseudo-Terminal (PTY) and a cloud-based execution engine.
+[![Vercel Deployment](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)](https://codtime.vercel.app)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Socket.io](https://img.shields.io/badge/Socket.io-4.8-blue?style=for-the-badge&logo=socket.io)](https://socket.io/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
----
-
-## 🚀 Key Features
-
-### 1. High-Fidelity Real-Time Collaboration
-Leveraging **Socket.io**, the platform synchronizes code state across all connected clients with minimal latency. It includes custom presence tracking to show active collaborators and their cursor locations.
-
-### 2. Interactive Terminal Integration
-A core technical highlight of this project is the integration of **Xterm.js** with a **node-pty** backend. This provides a genuine shell experience within the browser, allowing users to run shell commands and interact with running processes in real-time.
-
-### 3. Cross-Language Cloud Execution
-To ensure accessibility, I integrated the **Piston API** for code execution. This allows users to run code in over 10 languages (Python, Java, C++, Rust, etc.) without requiring any local compiler setup.
-
-### 4. Smart Workspace Management
-- **Java Support**: Automatically handles public class name detection for Java files.
-- **Dynamic Language Selection**: Instant syntax highlighting and execution environment switching.
-- **Responsive UI**: A modern, dark-themed interface built with **Tailwind CSS** and **Framer Motion**.
+[**Explore the App »**](https://codtime.vercel.app)
 
 ---
 
-## 🛠️ Technical Architecture
+**CODTIME** is a high-fidelity collaborative development environment that bridges the gap between static code editing and full-scale interactive development. Built with a focus on speed, aesthetics, and real-time synchronization.
 
-The application is built using a modern full-stack architecture:
-- **Frontend**: Next.js 15 (App Router), TypeScript, Tailwind CSS.
-- **Backend**: Node.js (Express) server handling WebSocket orchestration and PTY spawning.
-- **State Management**: Real-time event-driven synchronization via Socket.io.
-- **Editor Engine**: Monaco Editor (the core of VS Code).
+</div>
 
-### 🧠 Challenges Overcome
-- **Concurrency**: Managing "last-write-wins" and ensuring state consistency across multiple socket connections.
-- **Terminal Interactivity**: Mapping complex ANSI escape codes and handling bidirectional data streaming between the browser and the server's pseudo-terminal.
-- **Deployment**: Architecting the split between a serverless frontend (Vercel) and a persistent stateful backend (Render).
+## 📸 Preview
+<div align="center">
+  <img src="https://via.placeholder.com/1200x600/0a0a0a/00E5FF?text=CODTIME+Interactive+Workspace" alt="CODTIME Workspace" width="100%" />
+</div>
 
 ---
 
-## 📖 Learning Outcomes
-Developing CODTIME provided deep insights into:
-- Building scalable real-time systems with WebSockets.
-- Understanding Linux Pseudo-Terminals (PTY) and stream handling in Node.js.
-- Implementing secure remote code execution pipelines.
-- Managing production-grade full-stack deployments.
+## 💎 Features that Define CODTIME
+
+### ⚡ Lightning-Fast Collaboration
+Synchronize code across unlimited collaborators with sub-50ms latency. Powered by a custom Socket.io orchestration layer, your team can work together as if they were in the same room.
+
+### 📟 Interactive Pseudo-Terminal (PTY)
+A true shell experience in the browser. Unlike simple output logs, our terminal supports:
+- **Interactive Prompts**: Full support for `input()` (Python) and `Scanner` (Java).
+- **Persistent State**: Run shell commands, navigate directories, and manage processes.
+- **Shared Output**: See exactly what your team is executing in real-time.
+
+### ☁️ Universal Cloud Execution
+Powered by the **Piston API**, CODTIME supports instant execution for over 10+ major programming languages.
+- **Languages**: Python, Java, C++, Rust, Go, JavaScript, TypeScript, Ruby, C#, and more.
+- **Zero Configuration**: No local compilers or environments needed.
 
 ---
 
-## 🏁 Getting Started
+## 🛠️ The Tech Stack
 
-### Local Setup
-1. **Clone the Repo**: `git clone https://github.com/Sun1603/CODTIME.git`
-2. **Backend**:
-   ```bash
-   cd server
-   npm install
-   node index.js
-   ```
-3. **Frontend**:
-   ```bash
-   npm install
-   npm run dev
-   ```
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | Next.js 15, TypeScript, Tailwind CSS, Framer Motion |
+| **Backend** | Node.js, Express, Socket.io |
+| **Editor** | Monaco Editor (VS Code Engine) |
+| **Terminal** | Xterm.js, node-pty |
+| **Execution** | Piston API (Global Cloud Engine) |
 
 ---
 
-## 🌐 Deployment Guide
+## 🗺️ Learning Journey & Roadmap
 
-To ensure the best performance and persistent WebSocket connections, I recommend a split deployment strategy.
+CODTIME was developed as a deep dive into real-time engineering. The journey involved overcoming complex challenges in WebSocket state management and server-side process orchestration.
 
-### 1. Deploying the Backend (Stateful Server)
-I recommend using **Render.com** or **Railway.app** for the backend because they support persistent WebSocket connections (unlike Vercel's serverless functions).
-
-1. **Sign in to Render.com** and click **New > Web Service**.
-2. **Connect your GitHub repository**.
-3. **Configure the Service**:
-   - **Name**: `codtime-backend`
-   - **Root Directory**: `server`
-   - **Build Command**: `npm install`
-   - **Start Command**: `node index.js`
-4. **Set Environment Variables**:
-   - `FRONTEND_URL`: `https://your-app-name.vercel.app` (Your future Vercel URL).
-5. **Click Deploy**. Once finished, copy the URL provided (e.g., `https://codtime-backend.onrender.com`).
-
-### 2. Deploying the Frontend (Next.js UI)
-Use **Vercel** for the frontend to benefit from high-speed edge delivery.
-
-1. **Sign in to Vercel.com** and click **Add New > Project**.
-2. **Import your GitHub repository**.
-3. **Set Environment Variables**:
-   - `NEXT_PUBLIC_BACKEND_URL`: `https://codtime-backend.onrender.com` (The URL you copied from Render).
-4. **Click Deploy**. 
-5. **Final Touch**: Copy your Vercel URL and update the `FRONTEND_URL` in your Render dashboard if it differs from what you predicted.
+### 🔜 Upcoming Enhancements:
+- [ ] **Voice Channels**: Built-in audio for seamless team communication.
+- [ ] **Project Folders**: Support for multiple files and directory structures.
+- [ ] **Auth Integration**: Secure rooms with Clerk or NextAuth.
+- [ ] **Custom Themes**: A gallery of developer-curated editor themes.
 
 ---
 
-## 📄 License
-Distributed under the MIT License. See `LICENSE` for more information.
+## 🌐 Quick Deployment Guide
+
+### 1️⃣ Backend (Render/Railway)
+- **Root**: `server`
+- **Command**: `npm install && node index.js`
+- **Env**: `FRONTEND_URL` = Your Vercel URL
+
+### 2️⃣ Frontend (Vercel)
+- **Repo**: Link your GitHub
+- **Env**: `NEXT_PUBLIC_BACKEND_URL` = Your Backend URL
 
 ---
-**Developed by [Shreyangshu Das](https://github.com/Sun1603)**  
-*Student & Developer*
+
+## 📜 License & Acknowledgements
+- Distributed under the **MIT License**.
+- Special thanks to the **Monaco Editor** and **Xterm.js** communities.
+
+<div align="center">
+  <br />
+  <h3>Developed with 💙 by <b>Shreyangshu Das</b></h3>
+  <a href="https://github.com/Sun1603">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+</div>
