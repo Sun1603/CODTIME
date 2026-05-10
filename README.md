@@ -67,8 +67,38 @@ Developing CODTIME provided deep insights into:
 
 ---
 
-## 📜 License
-This project is open-source and available under the [MIT License](LICENSE).
+## 🌐 Deployment Guide
+
+To ensure the best performance and persistent WebSocket connections, I recommend a split deployment strategy.
+
+### 1. Deploying the Backend (Stateful Server)
+I recommend using **Render.com** or **Railway.app** for the backend because they support persistent WebSocket connections (unlike Vercel's serverless functions).
+
+1. **Sign in to Render.com** and click **New > Web Service**.
+2. **Connect your GitHub repository**.
+3. **Configure the Service**:
+   - **Name**: `codtime-backend`
+   - **Root Directory**: `server`
+   - **Build Command**: `npm install`
+   - **Start Command**: `node index.js`
+4. **Set Environment Variables**:
+   - `FRONTEND_URL`: `https://your-app-name.vercel.app` (Your future Vercel URL).
+5. **Click Deploy**. Once finished, copy the URL provided (e.g., `https://codtime-backend.onrender.com`).
+
+### 2. Deploying the Frontend (Next.js UI)
+Use **Vercel** for the frontend to benefit from high-speed edge delivery.
+
+1. **Sign in to Vercel.com** and click **Add New > Project**.
+2. **Import your GitHub repository**.
+3. **Set Environment Variables**:
+   - `NEXT_PUBLIC_BACKEND_URL`: `https://codtime-backend.onrender.com` (The URL you copied from Render).
+4. **Click Deploy**. 
+5. **Final Touch**: Copy your Vercel URL and update the `FRONTEND_URL` in your Render dashboard if it differs from what you predicted.
+
+---
+
+## 📄 License
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 **Developed by [Shreyangshu Das](https://github.com/Sun1603)**  
