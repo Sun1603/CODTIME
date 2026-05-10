@@ -1,99 +1,75 @@
-# 🚀 CODTIME: The Ultimate Real-Time Collaborative IDE
+# CODTIME: A Real-Time Collaborative Development Environment
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![Socket.io](https://img.shields.io/badge/Socket.io-4.8-blue?style=for-the-badge&logo=socket.io)](https://socket.io/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](https://opensource.org/licenses/MIT)
+## 📌 Project Overview
+**CODTIME** is a full-stack web application developed as a project to explore the complexities of real-time synchronization and remote code execution. The primary goal was to build a high-performance, collaborative workspace where multiple developers can write, discuss, and execute code simultaneously in a unified environment.
 
-**CODTIME** is a premium, high-fidelity real-time collaborative workspace designed for developers who demand speed, precision, and a high-end aesthetic. Built with the same engine that powers VS Code (Monaco Editor), it provides a seamless "Google Docs for Code" experience.
+This project focuses on bridging the gap between static code editors and interactive development environments by integrating a live Pseudo-Terminal (PTY) and a cloud-based execution engine.
 
 ---
 
-## ✨ Features that "Wow"
+## 🚀 Key Features
 
-### ⚡ Sub-50ms Collaboration
-Experience lag-free coding. Using custom Socket.io event orchestration, every keystroke is synchronized across all participants globally in milliseconds.
+### 1. High-Fidelity Real-Time Collaboration
+Leveraging **Socket.io**, the platform synchronizes code state across all connected clients with minimal latency. It includes custom presence tracking to show active collaborators and their cursor locations.
 
-### 🖥️ Live Interactive Terminal
-Unlike basic output logs, CODTIME features a **fully functional Pseudo-Terminal (PTY)**.
-- Run interactive shell commands (`ls`, `npm`, `cd`).
-- Interact with your running code (supports `input()` in Python, `Scanner` in Java, etc.).
-- Shared terminal output for all collaborators.
+### 2. Interactive Terminal Integration
+A core technical highlight of this project is the integration of **Xterm.js** with a **node-pty** backend. This provides a genuine shell experience within the browser, allowing users to run shell commands and interact with running processes in real-time.
 
-### 🌍 Cloud Execution Engine
-Execute code in **10+ languages** instantly. Powered by the **Piston API**, you don't need local compilers installed. 
-- Supported: Python, Java, JavaScript, TypeScript, C++, Rust, Go, Ruby, C#, and more.
-- **Java Smart-Sync**: Automatically detects public class names for flawless compilation.
+### 3. Cross-Language Cloud Execution
+To ensure accessibility, I integrated the **Piston API** for code execution. This allows users to run code in over 10 languages (Python, Java, C++, Rust, etc.) without requiring any local compiler setup.
 
-### 🎨 Cyberpunk Glassmorphism UI
-A meticulously crafted dark-themed interface featuring:
-- Smooth Framer Motion animations.
-- Real-time cursor presence and typing indicators.
-- Responsive design for tablets and desktops.
+### 4. Smart Workspace Management
+- **Java Support**: Automatically handles public class name detection for Java files.
+- **Dynamic Language Selection**: Instant syntax highlighting and execution environment switching.
+- **Responsive UI**: A modern, dark-themed interface built with **Tailwind CSS** and **Framer Motion**.
 
 ---
 
-## 🛠️ Architecture
+## 🛠️ Technical Architecture
 
-```mermaid
-graph TD
-    A[Next.js Frontend] <-->|Socket.io| B[Express Backend]
-    B <-->|node-pty| C[Interactive Shell]
-    B <-->|Axios| D[Piston API - Cloud Execution]
-    A <-->|Monaco Editor| E[Real-time Code State]
-```
+The application is built using a modern full-stack architecture:
+- **Frontend**: Next.js 15 (App Router), TypeScript, Tailwind CSS.
+- **Backend**: Node.js (Express) server handling WebSocket orchestration and PTY spawning.
+- **State Management**: Real-time event-driven synchronization via Socket.io.
+- **Editor Engine**: Monaco Editor (the core of VS Code).
 
----
-
-## 🚀 Installation & Local Development
-
-### Prerequisites
-- Node.js (v18+)
-- NPM or Yarn
-
-### 1. Setup Backend
-```bash
-cd server
-npm install
-node index.js
-```
-
-### 2. Setup Frontend
-```bash
-# In the root directory
-npm install
-npm run dev
-```
-
-Visit `http://localhost:3000` to start collaborating!
+### 🧠 Challenges Overcome
+- **Concurrency**: Managing "last-write-wins" and ensuring state consistency across multiple socket connections.
+- **Terminal Interactivity**: Mapping complex ANSI escape codes and handling bidirectional data streaming between the browser and the server's pseudo-terminal.
+- **Deployment**: Architecting the split between a serverless frontend (Vercel) and a persistent stateful backend (Render).
 
 ---
 
-## 🌐 Deployment Guide
-
-### **Phase 1: Backend (e.g., Render / Railway)**
-Deploy the `server` directory as a "Web Service".
-- **Start Command**: `node index.js`
-- **Env Variable**: `FRONTEND_URL` (Set to your Vercel URL)
-
-### **Phase 2: Frontend (Vercel)**
-Deploy the root directory.
-- **Framework**: Next.js
-- **Env Variable**: `NEXT_PUBLIC_BACKEND_URL` (Set to your Render/Railway URL)
+## 📖 Learning Outcomes
+Developing CODTIME provided deep insights into:
+- Building scalable real-time systems with WebSockets.
+- Understanding Linux Pseudo-Terminals (PTY) and stream handling in Node.js.
+- Implementing secure remote code execution pipelines.
+- Managing production-grade full-stack deployments.
 
 ---
 
-## 🤝 Contributing
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+## 🏁 Getting Started
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-Distributed under the MIT License. See `LICENSE` for more information.
+### Local Setup
+1. **Clone the Repo**: `git clone https://github.com/Sun1603/CODTIME.git`
+2. **Backend**:
+   ```bash
+   cd server
+   npm install
+   node index.js
+   ```
+3. **Frontend**:
+   ```bash
+   npm install
+   npm run dev
+   ```
 
 ---
-**Built with 💙 by [Sun1603](https://github.com/Sun1603)**
+
+## 📜 License
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+**Developed by [Shreyangshu Das](https://github.com/Sun1603)**  
+*Student & Developer*
