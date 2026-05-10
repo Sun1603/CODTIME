@@ -18,14 +18,8 @@
 
 ## 📸 Preview
 
-### 🏠 Landing Page
 <div align="center">
   <img src="./assets/landing.png" alt="CODTIME Landing Page" width="100%" />
-</div>
-
-### 💻 Interactive Workspace
-<div align="center">
-  <img src="./assets/preview.png" alt="CODTIME Workspace" width="100%" />
 </div>
 
 ---
