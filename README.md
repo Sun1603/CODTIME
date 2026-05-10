@@ -18,7 +18,7 @@
 
 ## 📸 Preview
 <div align="center">
-  <img src="https://via.placeholder.com/1200x600/0a0a0a/00E5FF?text=CODTIME+Interactive+Workspace" alt="CODTIME Workspace" width="100%" />
+  <img src="./assets/preview.png" alt="CODTIME Workspace" width="100%" />
 </div>
 
 ---
