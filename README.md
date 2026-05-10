@@ -1,73 +1,99 @@
-# 🚀 CODTIME: Real-Time Collaborative IDE
+# 🚀 CODTIME: The Ultimate Real-Time Collaborative IDE
 
-CODTIME is a premium, high-fidelity real-time collaborative coding platform built with **Next.js**, **Socket.io**, and **Monaco Editor**. It features a live interactive terminal, multi-language support via Cloud Execution, and a sleek neon-cyberpunk aesthetic.
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Socket.io](https://img.shields.io/badge/Socket.io-4.8-blue?style=for-the-badge&logo=socket.io)](https://socket.io/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-![CODTIME Preview](https://via.placeholder.com/1200x600/000000/00E5FF?text=CODTIME+COLLABORATIVE+IDE)
+**CODTIME** is a premium, high-fidelity real-time collaborative workspace designed for developers who demand speed, precision, and a high-end aesthetic. Built with the same engine that powers VS Code (Monaco Editor), it provides a seamless "Google Docs for Code" experience.
 
-## ✨ Key Features
+---
 
-- **⚡ Real-Time Sync**: Sub-50ms code synchronization across all collaborators using Socket.io.
-- **🖥️ Interactive Terminal**: A fully functional pseudo-terminal (PTY) that allows running shell commands and interacting with code output.
-- **🌍 Multi-Language Execution**: Powered by the **Piston API**, support for 10+ languages including Python, Java, C++, Rust, and Go—no local compilers needed!
-- **👥 Presence Tracking**: Live cursor indicators and a collaborator list to see who's online and where they're working.
-- **🎨 Premium UI**: A high-density, dark-themed interface built with Tailwind CSS and Framer Motion for smooth animations.
-- **📂 Java Smart-Sync**: Automatic detection of Java public class names for seamless compilation.
+## ✨ Features that "Wow"
 
-## 🛠️ Tech Stack
+### ⚡ Sub-50ms Collaboration
+Experience lag-free coding. Using custom Socket.io event orchestration, every keystroke is synchronized across all participants globally in milliseconds.
 
-- **Frontend**: Next.js 15, React 19, Tailwind CSS, Framer Motion
-- **Editor**: Monaco Editor (The engine behind VS Code)
-- **Backend**: Node.js, Express, Socket.io
-- **Terminal**: Xterm.js, node-pty
-- **Execution**: Piston API (Cloud-based code execution)
+### 🖥️ Live Interactive Terminal
+Unlike basic output logs, CODTIME features a **fully functional Pseudo-Terminal (PTY)**.
+- Run interactive shell commands (`ls`, `npm`, `cd`).
+- Interact with your running code (supports `input()` in Python, `Scanner` in Java, etc.).
+- Shared terminal output for all collaborators.
 
-## 🚀 Getting Started
+### 🌍 Cloud Execution Engine
+Execute code in **10+ languages** instantly. Powered by the **Piston API**, you don't need local compilers installed. 
+- Supported: Python, Java, JavaScript, TypeScript, C++, Rust, Go, Ruby, C#, and more.
+- **Java Smart-Sync**: Automatically detects public class names for flawless compilation.
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/YOUR_USERNAME/CODTIME.git
-cd CODTIME
+### 🎨 Cyberpunk Glassmorphism UI
+A meticulously crafted dark-themed interface featuring:
+- Smooth Framer Motion animations.
+- Real-time cursor presence and typing indicators.
+- Responsive design for tablets and desktops.
+
+---
+
+## 🛠️ Architecture
+
+```mermaid
+graph TD
+    A[Next.js Frontend] <-->|Socket.io| B[Express Backend]
+    B <-->|node-pty| C[Interactive Shell]
+    B <-->|Axios| D[Piston API - Cloud Execution]
+    A <-->|Monaco Editor| E[Real-time Code State]
 ```
 
-### 2. Install Dependencies
-**For the Frontend:**
-```bash
-npm install
-```
+---
 
-**For the Backend:**
+## 🚀 Installation & Local Development
+
+### Prerequisites
+- Node.js (v18+)
+- NPM or Yarn
+
+### 1. Setup Backend
 ```bash
 cd server
 npm install
-```
-
-### 3. Run Locally
-**Start Backend:**
-```bash
-cd server
 node index.js
 ```
 
-**Start Frontend:**
+### 2. Setup Frontend
 ```bash
 # In the root directory
+npm install
 npm run dev
 ```
 
-Visit `http://localhost:3000` to start coding!
+Visit `http://localhost:3000` to start collaborating!
 
-## 🌐 Deployment
+---
 
-### Backend (Render/Railway)
-1. Deploy the `server` directory.
-2. Set Environment Variable: `FRONTEND_URL` to your Vercel URL.
+## 🌐 Deployment Guide
 
-### Frontend (Vercel)
-1. Deploy the root directory.
-2. Set Environment Variable: `NEXT_PUBLIC_BACKEND_URL` to your Backend URL.
+### **Phase 1: Backend (e.g., Render / Railway)**
+Deploy the `server` directory as a "Web Service".
+- **Start Command**: `node index.js`
+- **Env Variable**: `FRONTEND_URL` (Set to your Vercel URL)
+
+### **Phase 2: Frontend (Vercel)**
+Deploy the root directory.
+- **Framework**: Next.js
+- **Env Variable**: `NEXT_PUBLIC_BACKEND_URL` (Set to your Render/Railway URL)
+
+---
+
+## 🤝 Contributing
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 📄 License
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
-Built with 💙 by Shreyangshu Das
+**Built with 💙 by [Sun1603](https://github.com/Sun1603)**
